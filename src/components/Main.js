@@ -1,42 +1,28 @@
 import React from "react";
 import Task from "./Task/Task";
+import TaskForm from "./Task/TaskForm";
 
 export default function Main() {
   const [taskList, setTaskList] = React.useState([]);
-  const [formInput, setFormInput] = React.useState("");
 
-  function addTask() {
+  function addTask(formInput) {
     setTaskList((prevItem) => {
       return [...prevItem, { key: taskList.length, desc: formInput }];
     });
   }
 
-  function handleFormChange(event) {
-    setFormInput(event.target.value);
-  }
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    addTask();
-    setFormInput("");
+  function handleSubmit(event, formInput) {
+    addTask(formInput);
   }
 
   function deleteTask(id) {
-    setTaskList(taskList.filter(item=>item.key!==id))
+    setTaskList(taskList.filter((item) => item.key !== id));
   }
 
-
+  // console.log(taskList);
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Add Task"
-          onChange={handleFormChange}
-          value={formInput}
-        />
-        <button>Add</button>
-      </form>
+      <TaskForm handleSubmit={handleSubmit} />
 
       {taskList.map((item) => {
         return (
