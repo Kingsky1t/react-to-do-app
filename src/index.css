@@ -4,3 +4,8 @@
   box-sizing: border-box;
   font-family: 'Courier New', Courier, monospace;
 }
+
+body {
+  color: rgb(255,255,255);
+  background-color:#2C3333;
+}

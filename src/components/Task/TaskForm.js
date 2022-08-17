@@ -1,4 +1,5 @@
 import React from "react";
+import "./TaskForm.css"
 
 export default function TaskForm({ handleSubmit }) {
   const [formInput, setFormInput] = React.useState("");
@@ -7,6 +8,7 @@ export default function TaskForm({ handleSubmit }) {
   }
   return (
     <form
+    className="task-form"
       onSubmit={(event) => {
         event.preventDefault();
         if (formInput === "") return;

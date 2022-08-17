@@ -1,6 +1,7 @@
 import React from "react";
 import Task from "./Task/Task";
 import TaskForm from "./Task/TaskForm";
+import "./Main.css"
 
 export default function Main() {
   const [taskList, setTaskList] = React.useState([]);
@@ -22,18 +23,26 @@ export default function Main() {
   // console.log(taskList);
   return (
     <>
+      <h1 className="main-header">To-Do List</h1>
       <TaskForm handleSubmit={handleSubmit} />
+      <h1 className="main-header">Tasks to do:</h1>
+      <div className="task-container">
 
-      {taskList.map((item) => {
-        return (
-          <Task
-            key={item.key}
-            index={item.key}
-            desc={item.desc}
-            deleteTask={deleteTask}
-          />
-        );
-      })}
+        {taskList.length===0?
+        
+        <h2 className="no-task">No tasks pending...</h2>:
+
+        taskList.map((item) => {
+          return (
+            <Task
+              key={item.key}
+              index={item.key}
+              desc={item.desc}
+              deleteTask={deleteTask}
+            />
+          );
+        })}
+      </div>
     </>
   );
 }
